@@ -5,10 +5,64 @@
     <title>Welcome to Vecta Corp.</title>
     <!-- Normal style sheet used for layout and general formatting. -->
     <link href="styles.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
     <!-- jQuery library reference. Latest is always referenced from jQuery's CDN. -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
 	<script>
-		// WRITE YOUR CODE HERE
+		window.addEventListener("load", function () {
+            "use strict";
+            var content = "";
+            
+            $.ajax({
+                type : "GET",
+                url : "json.js",
+                timeout : 10000,
+                dataType : "json",
+                beforeSend :  function () {
+                    $("#result").html("Loading...");
+                },
+                error : function (xhr, status, err) {
+                    var output, content = "";
+                    
+                    //CREATE THE ERROR MESSAGE
+                    content += "<p>";
+                    content += "Could not load JSON object.<br>";
+                    if (status !== null) {
+                        content += "<br>" + status;
+                    }
+                    if (err !== null) {
+                        content += "<br>" + err;
+                    }
+                    content += "</p>";
+                    
+                    //CREATE THE ERROR DIALOG
+                    output = document.createElement("div");
+                    output.id = "errorDialog";
+                    output.title = "Error Occurred";
+                    output.innerHTML = content;
+                    $("#content").append(output);
+                    
+                    //GENERATE THE DIALOG BOX
+                    $("#errorDialog").dialog();
+                },
+                success : function (data, status, xhr) {
+                    if (xhr.status === 200 && xhr.readyState === 4) {
+                        $.each(data, function (key, val) {
+                            $.each(val, function (key, val) {
+                                if (key > 0) {
+                                    content += "<br>";
+                                }
+                                content += "<strong>" + val["name"] + "</strong><br>";
+                                content += "<em>" + val["title"] + "</em><br>";
+                                content += val["bio"] + "<br>";
+                            });
+                        });
+                        $("#result").html(content);
+                    }
+                }
+            });
+        });
     </script>
 </head>
 
