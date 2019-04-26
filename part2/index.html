@@ -8,7 +8,25 @@
     <!-- jQuery library reference. Latest is always referenced from jQuery's CDN. -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
-		// WRITE YOUR CODE HERE
+        function teamHandler(data) {
+            "use strict";
+            var content = "";
+            window.console.log(data);
+            $(data).find("teammember").each(function (i) {
+                if (i > 0) {
+                    content += "<br>";
+                }
+                content += "<strong>" + $(this).find("name").text() + "</strong><br>";
+                content += "<em>" + $(this).find("title").text() + "</em><br>";
+                content += $(this).find("bio").text() + "<br>";
+            });
+            $("#team").html(content);
+        }
+        
+		window.addEventListener("load", function () {
+            "use strict";
+            $.get("team.xml", "Math.random()", teamHandler, "xml");
+        });
     </script>
 </head>
 
