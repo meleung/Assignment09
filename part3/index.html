@@ -8,13 +8,12 @@
     <!-- jQuery library reference. Latest is always referenced from jQuery's CDN. -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
-		window.addEventListener("load", function () {
+		$(document).ready(function () {
             "use strict";
             var content = "";
             
             $.getJSON("matt.json", function (data) {
                 $.each(data, function (key, val) {
-                    window.console.log(val);
                     $.each(val, function (key, val) {
                         if (key > 0) {
                             content += "<br>";

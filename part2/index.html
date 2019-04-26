@@ -23,7 +23,7 @@
             $("#team").html(content);
         }
         
-		window.addEventListener("load", function () {
+		$(document).ready(function () {
             "use strict";
             $.get("team.xml", "Math.random()", teamHandler, "xml");
         });
