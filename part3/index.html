@@ -8,7 +8,15 @@
     <!-- jQuery library reference. Latest is always referenced from jQuery's CDN. -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script>
-		// WRITE YOUR CODE HERE
+		window.addEventListener("load", function () {
+            "use strict";
+            
+            $.getJSON("matt.json", function (data) {
+                $.each(data, function (key, val) {
+                    window.console.log(val);
+                });
+            });
+        });
     </script>
 </head>
 
