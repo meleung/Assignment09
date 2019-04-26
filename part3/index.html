@@ -10,11 +10,21 @@
 	<script>
 		window.addEventListener("load", function () {
             "use strict";
+            var content = "";
             
             $.getJSON("matt.json", function (data) {
                 $.each(data, function (key, val) {
                     window.console.log(val);
+                    $.each(val, function (key, val) {
+                        if (key > 0) {
+                            content += "<br>";
+                        }
+                        content += val["name"] + " ";
+                        content += "(" + val["branch"] + ")<br>";
+                        content += "<em>" + val["title"] + "</em><br>";
+                    });
                 });
+                $("#result").html(content);
             });
         });
     </script>

@@ -1,8 +1,8 @@
 {
-    //"Contributors" : [
-        { "name" : "Matt",  "age" : 34 },
-        { "name" : "Alan",  "age" : 24 },
-        { "name" : "Jane",  "age" : 29 },
-        { "name" : "Daisy", "age" : 27 }
-    //]    
+    "Teammembers" : [
+        { "name" : "Alan",  "branch" : "Seattle, WA",   "title" : "Chief Executive Officer" },
+        { "name" : "Matt",  "branch" : "San Diego, CA", "title" : "Chief Technology Officer" },
+        { "name" : "Daisy", "branch" : "Chicago, IL",   "title" : "Chief Sales Officer" },
+        { "name" : "Jane",  "branch" : "New York, NY",  "title" : "Vice President of Marketing" }
+    ]
 }
