@@ -8,7 +8,19 @@
     <!-- jQuery library reference. Latest is always referenced from jQuery's CDN. -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   	<script>
-		// WRITE YOUR CODE HERE
+        window.addEventListener("load", function () {
+            "use strict";
+            
+            $('a#vprospect').on("click", function() {
+                $('#solution').load('solutions.html #vprospect');
+            });
+            $('a#vconvert').on("click", function() {
+                $('#solution').load('solutions.html #vconvert');
+            });
+            $('a#vretain').on("click", function() {
+                $('#solution').load('solutions.html #vretain');
+            });
+        });
     </script>
 </head>
 
